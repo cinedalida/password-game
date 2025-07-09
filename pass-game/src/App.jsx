@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 
 const funPhrases = [
-  "ready na ba magpaka tanga?",
+  "ready na ba magpaka-tanga?",
   "baks, KAYANIN MO!",
   "hindi lahat ng strong maganda",
   "lagi ka nalang ganyan",
