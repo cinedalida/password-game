@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import "./App.css";
 
-const conditionList = [
+const conditionsList = [
   {
     id: 1,
     description: "Must be at least 8 characters long",
@@ -22,7 +22,17 @@ const conditionList = [
 ];
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [password, setPassword] = useState("");
+
+  const satisfiedConditions = conditionsList.filter((cond) =>
+    cond.check(password)
+  );
+
+  const unsatisfiedConditions = conditionsList.filter(
+    (cond) => !cond.check(password)
+  );
+
+  const isGameOver = satisfiedConditions.length === conditionsList.length;
 
   return <></>;
 }
