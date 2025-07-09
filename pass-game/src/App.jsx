@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import "./App.css";
 
@@ -23,16 +23,34 @@ const conditionsList = [
 
 function App() {
   const [password, setPassword] = useState("");
+  const [currentLevel, setCurrentLevel] = useState(1);
 
-  const satisfiedConditions = conditionsList.filter((cond) =>
+  const visibleConditions = conditionsList.slice(0, currentLevel);
+
+  const satisfiedConditions = visibleConditions.filter((cond) =>
     cond.check(password)
   );
 
-  const unsatisfiedConditions = conditionsList.filter(
+  const unsatisfiedConditions = visibleConditions.filter(
     (cond) => !cond.check(password)
   );
 
-  const isGameOver = satisfiedConditions.length === conditionsList.length;
+  useEffect(() => {
+    // if all conditions are met, proceed to the next level
+    if (
+      unsatisfiedConditions.length === 0 &&
+      currentLevel < conditionsList.length
+    ) {
+      const timer = setTimeout(() => {
+        setCurrentLevel(currentLevel + 1);
+      }, 600); // delay
+      return () => clearTimeout(timer);
+    }
+  }, [password, currentLevel]);
+
+  const isGameOver =
+    currentLevel === conditionsList.length &&
+    satisfiedConditions.length === currentLevel;
 
   return (
     <>
