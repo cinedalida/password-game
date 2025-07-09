@@ -21,6 +21,14 @@ h1 {
   line-height: 1.1;
 }
 
+h2 {
+  font-size: 1em;
+  font-weight: 400;
+  color: #666;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
 input {
   /* text */
   color: #333;

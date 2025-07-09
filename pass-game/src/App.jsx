@@ -2,6 +2,28 @@ import { useState, useEffect } from "react";
 
 import "./App.css";
 
+const funPhrases = [
+  "ready na ba magpaka tanga?",
+  "baks, KAYANIN MO!",
+  "hindi lahat ng strong maganda",
+  "lagi ka nalang ganyan",
+  "bakit? bakit? bakit?",
+  "wag na lang!",
+  "awa na lang",
+  "umay",
+  "pa-awat ka na baksss",
+  "JUSKO PO!!!!!",
+  "masokista ka ba? bat ganyan password mo!?!?",
+  "kaya today?",
+  "wala ka pa sa kalahati baks",
+  "sumuko ka na? wag ngayon!",
+  "lagi nang umaawiiiiiit, umaawit mula kusina hanggang sa salaaaaa",
+  "tiwala lang, isang condition na lang",
+  "minsan di mo talaga makukuha lahat",
+  "baka naman kasi inooverthink mo lang....",
+  "Good luck babe!!!!!!",
+];
+
 const marvelCharacters = [
   "ironman",
   "spiderman",
@@ -16,17 +38,16 @@ const marvelCharacters = [
   "blackwidow",
   "doctorstrange",
   "falcon",
-  "shuri",
   "gamora",
   "drax",
   "star-lord",
-  "rocket",
   "nebula",
   "bucky",
-  "kang",
   "america",
   "groot",
   "moonknight",
+  "yelena",
+  "bob",
 ];
 
 const conditionsList = [
@@ -56,27 +77,22 @@ const conditionsList = [
     check: (pw) => pw.toLowerCase().includes("casual"),
   },
   {
-    id: 7,
-    description: "Must be a palindrome",
-    check: (pw) => pw === pw.split("").reverse().join(""),
+    id: 6,
+    description: "isama mo na din yung favorite color ng gumawa ng game na 'to",
+    check: (pw) => pw.toLowerCase().includes("violet"),
   },
   {
-    id: 8,
+    id: 7,
     description: "Must have exactly 3 numbers",
     check: (pw) => (pw.match(/\d/g) || []).length === 3,
   },
   {
-    id: 9,
+    id: 8,
     description: "Must contain at least 2 emojis",
     check: (pw) => (pw.match(/[\u{1F600}-\u{1F64F}]/gu) || []).length >= 2,
   },
   {
-    id: 10,
-    description: "Must not contain the letter 'e'",
-    check: (pw) => !pw.toLowerCase().includes("e"),
-  },
-  {
-    id: 11,
+    id: 9,
     description: "Must include today’s weekday",
     check: (pw) => {
       const today = new Date()
@@ -86,23 +102,24 @@ const conditionsList = [
     },
   },
   {
-    id: 12,
-    description: "Must include your favorite hex color code (e.g. #a1b2c3)",
+    id: 10,
+    description: "Must include your favorite hex color code",
     check: (pw) => /#[0-9a-fA-F]{6}/.test(pw),
   },
   {
-    id: 13,
-    description: "Must include the capital of England but backwards",
-    check: (pw) => pw.toLowerCase().includes("nodnol"),
+    id: 11,
+    description:
+      "Must include a Sponge Cola song (hint: starts with 'n' ends with 'a')",
+    check: (pw) => pw.toLowerCase().includes("nakpagtataka"),
   },
   {
-    id: 14,
-    description: "Must include the year Titanic was released",
-    check: (pw) => pw.includes("1997"),
+    id: 12,
+    description: "Isama mo yung pinaka masakit na kanta ng Up Dharma Down",
+    check: (pw) => pw.includes("Oo"),
   },
   {
     // .some() checks if at least one of the characters is included
-    id: 15,
+    id: 13,
     description: "Must include a Marvel character",
     check: (pw) =>
       marvelCharacters.some((character) =>
@@ -115,6 +132,7 @@ const conditionsList = [
 function App() {
   const [password, setPassword] = useState("");
   const [currentLevel, setCurrentLevel] = useState(1);
+  const [funPhrase, setFunPhrase] = useState(funPhrases[0]);
 
   const visibleConditions = conditionsList.slice(0, currentLevel);
 
@@ -125,6 +143,14 @@ function App() {
   const unsatisfiedConditions = visibleConditions.filter(
     (cond) => !cond.check(password)
   );
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const randomIndex = Math.floor(Math.random() * funPhrases.length);
+      setFunPhrase(funPhrases[randomIndex]);
+    }, 8000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     // if all conditions are met, proceed to the next level
@@ -147,6 +173,7 @@ function App() {
     <>
       <div className="app">
         <h1 className="title">Password Game</h1>
+        <h2 className="subtitle">{funPhrase}</h2>
       </div>
       <input
         type="text"
@@ -157,7 +184,7 @@ function App() {
       ></input>
 
       {isGameOver && (
-        <h2 className="success">All conditions satisfied! Game Over!</h2>
+        <h2 className="success">Congrats Bakss!! Naipanalo mo sa wakas!!</h2>
       )}
 
       <div className="conditions not-met">
