@@ -96,7 +96,10 @@ const conditionsList = [
     description: "Must include today’s weekday",
     check: (pw) => {
       const today = new Date()
-        .toLocaleDateString("en-US", { weekday: "long" })
+        .toLocaleDateString("en-US", {
+          weekday: "long",
+          timeZone: "Asia/Manila",
+        })
         .toLowerCase();
       return pw.toLowerCase().includes(today);
     },
@@ -110,7 +113,7 @@ const conditionsList = [
     id: 11,
     description:
       "Must include a Sponge Cola song (hint: starts with 'n' ends with 'a')",
-    check: (pw) => pw.toLowerCase().includes("nakpagtataka"),
+    check: (pw) => pw.toLowerCase().includes("nakapagtataka"),
   },
   {
     id: 12,
@@ -184,7 +187,9 @@ function App() {
       ></input>
 
       {isGameOver && (
-        <h2 className="success">Congrats Bakss!! Naipanalo mo sa wakas!!</h2>
+        <h2 className="success">
+          Congrats Bakss!! Enjoy your greatest password everr!!
+        </h2>
       )}
 
       <div className="conditions not-met">
