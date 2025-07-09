@@ -42,7 +42,7 @@ function App() {
       <input
         type="text"
         placeholder="Enter Password..."
-        value="{password}"
+        value={password}
         onChange={(e) => setPassword(e.target.value)}
         disabled={isGameOver}
       ></input>
