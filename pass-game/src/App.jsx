@@ -34,7 +34,40 @@ function App() {
 
   const isGameOver = satisfiedConditions.length === conditionsList.length;
 
-  return <></>;
+  return (
+    <>
+      <div className="app">
+        <h1 className="title">Password Game</h1>
+      </div>
+      <input
+        type="text"
+        placeholder="Enter Password..."
+        value="{password}"
+        onChange={(e) => setPassword(e.target.value)}
+        disabled={isGameOver}
+      ></input>
+
+      {isGameOver && (
+        <h2 className="success">All conditions satisfied! Game Over!</h2>
+      )}
+
+      <div className="conditions not-met">
+        {unsatisfiedConditions.map((cond) => (
+          <div key={cond.id} className="condition red">
+            X {cond.description}
+          </div>
+        ))}
+      </div>
+
+      <div className="conditions met">
+        {satisfiedConditions.map((cond) => (
+          <div key={cond.id} className="condition green">
+            {cond.description}
+          </div>
+        ))}
+      </div>
+    </>
+  );
 }
 
 export default App;
