@@ -195,7 +195,7 @@ function App() {
       <div className="conditions not-met">
         {unsatisfiedConditions.map((cond) => (
           <div key={cond.id} className="condition red">
-            X {cond.description}
+            {cond.description}
           </div>
         ))}
       </div>
