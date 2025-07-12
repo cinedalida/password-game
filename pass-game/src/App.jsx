@@ -129,6 +129,19 @@ const conditionsList = [
         pw.toLowerCase().includes(character)
       ),
   },
+  {
+    id: 14,
+    description: "Must include the best street food in Gate 1",
+    check: (pw) =>
+      ["kwek-kwek", "sweetcorn"].some((food) =>
+        pw.toLowerCase().includes(food)
+      ),
+  },
+  {
+    id: 15,
+    description: "live jesus in our hearts...",
+    check: (pw) => pw.toLowerCase().includes("forever"),
+  },
   // more conditions!!!!!
 ];
 
