@@ -106,23 +106,28 @@ const conditionsList = [
   },
   {
     id: 10,
+    description: "Include the sum of all digits in 2⁸",
+    check: (pw) => pw.includes("13"), // 2+5+6 = 13
+  },
+  {
+    id: 11,
     description: "Must include your favorite hex color code",
     check: (pw) => /#[0-9a-fA-F]{6}/.test(pw),
   },
   {
-    id: 11,
+    id: 12,
     description:
       "Must include a Sponge Cola song (hint: starts with 'n' ends with 'a')",
     check: (pw) => pw.toLowerCase().includes("nakapagtataka"),
   },
   {
-    id: 12,
+    id: 13,
     description: "Isama mo yung pinaka masakit na kanta ng Up Dharma Down",
     check: (pw) => pw.includes("Oo"),
   },
   {
     // .some() checks if at least one of the characters is included
-    id: 13,
+    id: 14,
     description: "Must include a Marvel character",
     check: (pw) =>
       marvelCharacters.some((character) =>
@@ -130,7 +135,12 @@ const conditionsList = [
       ),
   },
   {
-    id: 14,
+    id: 15,
+    description: "Include the 7th prime number",
+    check: (pw) => pw.includes("17"), // 2, 3, 5, 7, 11, 13, 17
+  },
+  {
+    id: 16,
     description: "Must include the best street food in Gate 1",
     check: (pw) =>
       ["kwek-kwek", "sweetcorn"].some((food) =>
@@ -138,9 +148,27 @@ const conditionsList = [
       ),
   },
   {
-    id: 15,
+    id: 17,
     description: "live jesus in our hearts...",
     check: (pw) => pw.toLowerCase().includes("forever"),
+  },
+  {
+    id: 18,
+    description: "Include a Fibonacci number under 100",
+    check: (pw) => {
+      const fibs = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
+      return fibs.some((num) => pw.includes(num.toString()));
+    },
+  },
+  {
+    id: 19,
+    description: "Include the result of 2⁵",
+    check: (pw) => pw.includes("32"),
+  },
+  {
+    id: 20,
+    description: "Include the number of sides of a dodecagon",
+    check: (pw) => pw.includes("12"),
   },
   // more conditions!!!!!
 ];
