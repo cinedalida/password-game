@@ -170,6 +170,16 @@ const conditionsList = [
     description: "Include the number of sides of a dodecagon",
     check: (pw) => pw.includes("12"),
   },
+  {
+    id: 21,
+    description: "Palaging gutom, pero hindi lumalaki.",
+    check: (pw) => pw.toLowerCase().includes("wallet"),
+  },
+  {
+    id: 22,
+    description: "Bugtong: Hindi hayop, hindi tao, pumapalo. Ano ‘yun?",
+    check: (pw) => pw.toLowerCase().includes("electricfan"),
+  },
   // more conditions!!!!!
 ];
 
