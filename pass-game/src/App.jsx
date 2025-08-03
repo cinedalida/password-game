@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 
 const funPhrases = [
-  "ready na ba magpaka-tanga?",
+  "ready na ba CSmashers?",
   "baks, KAYANIN MO!",
   "hindi lahat ng strong maganda",
   "lagi ka nalang ganyan",
@@ -17,38 +17,38 @@ const funPhrases = [
   "kaya today?",
   "wala ka pa sa kalahati baks",
   "sumuko ka na? wag ngayon!",
-  "lagi nang umaawiiiiiit, umaawit mula kusina hanggang sa salaaaaa",
+  // "lagi nang umaawiiiiiit, umaawit mula kusina hanggang sa salaaaaa",
   "tiwala lang, isang condition na lang",
   "minsan di mo talaga makukuha lahat",
   "baka naman kasi inooverthink mo lang....",
   "Good luck babe!!!!!!",
 ];
 
-const marvelCharacters = [
-  "ironman",
-  "spiderman",
-  "thor",
-  "loki",
-  "thanos",
-  "wanda",
-  "vision",
-  "hawkeye",
-  "hulk",
-  "antman",
-  "blackwidow",
-  "doctorstrange",
-  "falcon",
-  "gamora",
-  "drax",
-  "star-lord",
-  "nebula",
-  "bucky",
-  "america",
-  "groot",
-  "moonknight",
-  "yelena",
-  "bob",
-];
+// const marvelCharacters = [
+//   "ironman",
+//   "spiderman",
+//   "thor",
+//   "loki",
+//   "thanos",
+//   "wanda",
+//   "vision",
+//   "hawkeye",
+//   "hulk",
+//   "antman",
+//   "blackwidow",
+//   "doctorstrange",
+//   "falcon",
+//   "gamora",
+//   "drax",
+//   "star-lord",
+//   "nebula",
+//   "bucky",
+//   "america",
+//   "groot",
+//   "moonknight",
+//   "yelena",
+//   "bob",
+// ];
 
 const conditionsList = [
   {
@@ -73,18 +73,19 @@ const conditionsList = [
   },
   {
     id: 5,
-    description: "Inlude the best song of Chappell Roan",
-    check: (pw) => pw.toLowerCase().includes("casual"),
+    description: "Must include the year in the CSPC Logo",
+    check: (pw) => pw.includes("2024"),
   },
   {
     id: 6,
-    description: "isama mo na din yung favorite color ng gumawa ng game na 'to",
-    check: (pw) => pw.toLowerCase().includes("violet"),
+    description:
+      "isama mo na din yung nickname ng Chief Executive Officer ngayong year",
+    check: (pw) => pw.toLowerCase().includes("risse"),
   },
   {
     id: 7,
-    description: "Must have exactly 3 numbers",
-    check: (pw) => (pw.match(/\d/g) || []).length === 3,
+    description: "Must have exactly 6 numbers",
+    check: (pw) => (pw.match(/\d/g) || []).length === 6,
   },
   {
     id: 8,
@@ -104,43 +105,43 @@ const conditionsList = [
       return pw.toLowerCase().includes(today);
     },
   },
+  // {
+  //   id: 10,
+  //   description: "Include the sum of all digits in 2⁸",
+  //   check: (pw) => pw.includes("13"), // 2+5+6 = 13
+  // },
+  // {
+  //   id: 10,
+  //   description: "Must include your favorite hex color code",
+  //   check: (pw) => /#[0-9a-fA-F]{6}/.test(pw),
+  // },
   {
     id: 10,
-    description: "Include the sum of all digits in 2⁸",
-    check: (pw) => pw.includes("13"), // 2+5+6 = 13
+    description: "must include the easiest programming language",
+    check: (pw) => pw.toLowerCase().includes("python"),
   },
   {
     id: 11,
-    description: "Must include your favorite hex color code",
-    check: (pw) => /#[0-9a-fA-F]{6}/.test(pw),
+    description: "Isama mo na din yung motto ng lego theme ng CSPC!!",
+    check: (pw) =>
+      pw.toLowerCase().includes("startyourcareerbuildthefirststepwithcspc"),
   },
+  // {
+  //   // .some() checks if at least one of the characters is included
+  //   id: 14,
+  //   description: "Must include a Marvel character",
+  //   check: (pw) =>
+  //     marvelCharacters.some((character) =>
+  //       pw.toLowerCase().includes(character)
+  //     ),
+  // },
+  // {
+  //   id: 15,
+  //   description: "Include the 7th prime number",
+  //   check: (pw) => pw.includes("17"), // 2, 3, 5, 7, 11, 13, 17
+  // },
   {
     id: 12,
-    description:
-      "Must include a Sponge Cola song (hint: starts with 'n' ends with 'a')",
-    check: (pw) => pw.toLowerCase().includes("nakapagtataka"),
-  },
-  {
-    id: 13,
-    description: "Isama mo yung pinaka masakit na kanta ng Up Dharma Down",
-    check: (pw) => pw.includes("Oo"),
-  },
-  {
-    // .some() checks if at least one of the characters is included
-    id: 14,
-    description: "Must include a Marvel character",
-    check: (pw) =>
-      marvelCharacters.some((character) =>
-        pw.toLowerCase().includes(character)
-      ),
-  },
-  {
-    id: 15,
-    description: "Include the 7th prime number",
-    check: (pw) => pw.includes("17"), // 2, 3, 5, 7, 11, 13, 17
-  },
-  {
-    id: 16,
     description: "Must include the best street food in Gate 1",
     check: (pw) =>
       ["kwek-kwek", "sweetcorn"].some((food) =>
@@ -148,38 +149,38 @@ const conditionsList = [
       ),
   },
   {
-    id: 17,
+    id: 13,
     description: "live jesus in our hearts...",
     check: (pw) => pw.toLowerCase().includes("forever"),
   },
-  {
-    id: 18,
-    description: "Include a Fibonacci number under 100",
-    check: (pw) => {
-      const fibs = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
-      return fibs.some((num) => pw.includes(num.toString()));
-    },
-  },
-  {
-    id: 19,
-    description: "Include the result of 2⁵",
-    check: (pw) => pw.includes("32"),
-  },
-  {
-    id: 20,
-    description: "Include the number of sides of a dodecagon",
-    check: (pw) => pw.includes("12"),
-  },
-  {
-    id: 21,
-    description: "Palaging gutom, pero hindi lumalaki.",
-    check: (pw) => pw.toLowerCase().includes("wallet"),
-  },
-  {
-    id: 22,
-    description: "Bugtong: Hindi hayop, hindi tao, pumapalo. Ano ‘yun?",
-    check: (pw) => pw.toLowerCase().includes("electricfan"),
-  },
+  // {
+  //   id: 18,
+  //   description: "Include a Fibonacci number under 100",
+  //   check: (pw) => {
+  //     const fibs = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
+  //     return fibs.some((num) => pw.includes(num.toString()));
+  //   },
+  // },
+  // {
+  //   id: 19,
+  //   description: "Include the result of 2⁵",
+  //   check: (pw) => pw.includes("32"),
+  // },
+  // {
+  //   id: 20,
+  //   description: "Include the number of sides of a dodecagon",
+  //   check: (pw) => pw.includes("12"),
+  // },
+  // {
+  //   id: 21,
+  //   description: "Palaging gutom, pero hindi lumalaki.",
+  //   check: (pw) => pw.toLowerCase().includes("wallet"),
+  // },
+  // {
+  //   id: 22,
+  //   description: "Bugtong: Hindi hayop, hindi tao, pumapalo. Ano ‘yun?",
+  //   check: (pw) => pw.toLowerCase().includes("electricfan"),
+  // },
   // more conditions!!!!!
 ];
 
@@ -226,7 +227,7 @@ function App() {
   return (
     <>
       <div className="app">
-        <h1 className="title">Password Game</h1>
+        <h1 className="title">CSPC Password Game⚡</h1>
         <h2 className="subtitle">{funPhrase}</h2>
       </div>
       <input
