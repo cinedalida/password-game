@@ -240,7 +240,7 @@ function App() {
 
       {isGameOver && (
         <h2 className="success">
-          Congrats Bakss!! Enjoy your greatest password everr!!
+          Congrats!! Enjoy your greatest password everr!!
         </h2>
       )}
 
