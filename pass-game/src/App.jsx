@@ -5,8 +5,8 @@ import "./App.css";
 const funPhrases = [
   "ready na ba CSmashers?",
   "baks, KAYANIN MO!",
-  "hindi lahat ng strong maganda",
-  "lagi ka nalang ganyan",
+  // "hindi lahat ng strong maganda",
+  // "lagi ka nalang ganyan",
   "bakit? bakit? bakit?",
   "wag na lang!",
   "awa na lang",
@@ -79,7 +79,7 @@ const conditionsList = [
   {
     id: 6,
     description:
-      "isama mo na din yung nickname ng Chief Executive Officer ngayong year",
+      "Isama mo na din yung nickname ng Chief Executive Officer ngayong year",
     check: (pw) => pw.toLowerCase().includes("risse"),
   },
   {
@@ -123,8 +123,7 @@ const conditionsList = [
   {
     id: 11,
     description: "Isama mo na din yung motto ng lego theme ng CSPC!!",
-    check: (pw) =>
-      pw.toLowerCase().includes("startyourcareerbuildthefirststepwithcspc"),
+    check: (pw) => pw.toLowerCase().includes("buildthefirststepwithcspc"),
   },
   // {
   //   // .some() checks if at least one of the characters is included
